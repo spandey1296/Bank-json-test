@@ -116,4 +116,16 @@ module.exports = class Dao {
         }
     }
 
+     async bulkInsert(data){
+        try{
+          return await this.model.bulkCreate(data, {returning: true});
+           }
+           catch(error){
+           throw error
+           }
+        }
+
+
+
 }
+

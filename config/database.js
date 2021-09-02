@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize");
 
-const db = new Sequelize("kyc_data", "root", "Herbalife@47", {
-  dialect: "mysql",
-  host: "localhost",
+const db = new Sequelize("cardplay", "appuser", "fF6XsK-ndQuLp2at", {
+  dialect: "mariadb",
+  host: "flush2.a52p.private",
   pool: {
     max: 1000,
     min: 0,

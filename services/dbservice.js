@@ -72,34 +72,46 @@ class DbService{
 
     async dumpIfscIntoDb(){
         try {
+
             console.log('IFSC_LIST:process starting');
-            for(let ifsc of ifsc_list ){
+            let arr=[];
+
+           for(let ifsc of ifsc_list ){
+                
             const ifscDetails = await util.getRazorPayIfscDetails(ifsc);
         if (ifscDetails) {
-        
-            let ifscCodeExist = await ifscDao.find({
-                query: { ifscCode: ifsc },
-              });
 
-        let bank_data   = util.get_bank_details(ifscDetails);
-        if (ifscCodeExist.length > 0) {
-            await ifscDao.update(
-                {
-                  ifscCode: ifsc,
-                },
-                bank_data
-              );
-        }  
+           // console.log(ifsc,"ifsc");
         
-            else {
-            await ifscDao.insert(bank_data);
-        }
+        //     let ifscCodeExist = await ifscDao.find({
+        //         query: { ifscCode: ifsc },
+        //       });
+
+         let bank_data   = util.get_bank_details(ifscDetails);
+         await ifscDao.insert(bank_data);
+         //arr.push(bank_data);
+        // if (ifscCodeExist.length > 0) {
+        //     await ifscDao.update(
+        //         {
+        //           ifscCode: ifsc,
+        //         },
+        //         bank_data
+        //       );
+        // }  
+        
+        //     else {
+        //     
+        // }
+
+
+
         } else {
          console.log("IFSC_LIST: ifsc not matched",ifsc);
         }
 
             
         }
+        //await ifscDao.bulkInsert(arr);
         console.log('IFSC_LIST: process completed');
 
         } 
@@ -113,7 +125,7 @@ class DbService{
 
     }
     
-
+   
 
 
 

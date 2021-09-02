@@ -2,9 +2,9 @@ var db=require('./config/database');
 var dbService=require('./services/dbservice');
 
 function dumping(){
-  dbService.dumpBankInfoIntoDb();
- // dbService.dumpBankNameIntoDb();
-  //dbService.dumpIfscIntoDb();
+  //dbService.dumpBankInfoIntoDb();
+  //dbService.dumpBankNameIntoDb();
+  dbService.dumpIfscIntoDb();
 
 }
 
